@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DREAD REBORN</title>
 
+  <!-- Discord / social embed -->
+  <meta property="og:title" content="Dread Reborn" />
+  <meta property="og:description" content="A safe Minecraft horror modpack. May be flagged by antivirus due to mod files, but contains no malware." />
+  <meta property="og:image" content="https://dreadreborn.com/2ee07491-5e47-40ff-aa53-1b24bfea036a.png" />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="2ee07491-5e47-40ff-aa53-1b24bfea036a.png" />
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&display=swap');
 
@@ -103,6 +112,58 @@
       15% { opacity: 1; }
       to { transform: translateY(-120vh); opacity: 0; }
     }
+  
+
+    /* Fade & slide animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.3s; }
+    .delay-2 { animation-delay: 0.6s; }
+    .delay-3 { animation-delay: 0.9s; }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* FAQ section */
+    .faq {
+      margin-top: 80px;
+      text-align: left;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.85;
+    }
+
+    .faq h3 {
+      margin-bottom: 20px;
+      font-size: 1.6rem;
+      color: #b00000;
+    }
+
+    .faq-item {
+      margin-bottom: 22px;
+    }
+
+    .faq-item strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #ddd;
+    }
+
+    .faq-item span {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #aaa;
+    }
+
   </style>
 </head>
 <body>
@@ -119,12 +180,12 @@
     }
   </script>
 
-  <main class="hero">
-    <img src="2ee07491-5e47-40ff-aa53-1b24bfea036a.png" alt="Dread Reborn Logo" class="logo" />
+  <main class="hero fade-in">
+    <img src="2ee07491-5e47-40ff-aa53-1b24bfea036a.png" alt="Dread Reborn Logo" class="logo fade-in delay-1" />
 
-    <h1>DREAD REBORN</h1>
+    <h1 class="fade-in delay-2">DREAD REBORN</h1>
 
-    <p class="subtitle">
+    <p class="subtitle fade-in delay-3">
       When night falls, terror rises. A brutal Minecraft horror modpack inspired by the Blood Moon.
     </p>
 
@@ -132,7 +193,32 @@
       <a href="dread.exe" class="btn">Download Modpack</a>
     </div>
 
-    <div class="version">Version 1.0 · Minecraft 1.21.x</div>
+    <div class="version fade-in delay-3">Version 1.0 · Minecraft 1.21.x</div>
+    
+    <section class="faq fade-in delay-3">
+      <h3>FAQ</h3>
+
+      <div class="faq-item">
+        <strong>Is Dread Reborn safe?</strong>
+        <span>Yes. Dread Reborn contains no malware, spyware, or hidden software. It is a standard Minecraft modpack.</span>
+      </div>
+
+      <div class="faq-item">
+        <strong>Why does my antivirus or Discord flag the file?</strong>
+        <span>Some antiviruses and platforms flag modpacks because they include executable Java files or are compressed archives. This is normal for Minecraft mods. The file is safe.</span>
+      </div>
+
+      <div class="faq-item">
+        <strong>What happens when I send it on Discord?</strong>
+        <span>Discord may show a warning banner due to the file type. This does NOT mean the file is dangerous. It is safe to download and use.</span>
+      </div>
+
+      <div class="faq-item">
+        <strong>What versions are supported?</strong>
+        <span>Minecraft 1.21.x using Forge.</span>
+      </div>
+    </section>
+
   </main>
 
 </body>
