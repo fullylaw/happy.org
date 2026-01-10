@@ -66,7 +66,6 @@
       margin-bottom: 40px;
     }
 
-    /* Main Description Panel */
     .content-card {
       background: rgba(255, 255, 255, 0.02);
       backdrop-filter: blur(15px);
@@ -86,7 +85,6 @@
 
     .highlight-red { color: #ff3333; font-weight: 600; }
 
-    /* Buttons */
     .btn-group { display: flex; justify-content: center; gap: 15px; margin-bottom: 60px; flex-wrap: wrap; }
     
     .btn {
@@ -104,7 +102,6 @@
     .btn-secondary { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
     .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
 
-    /* VIDEO SECTION - PROFESSIONAL GRID */
     .video-section {
       margin-top: 40px;
       padding: 40px 0;
@@ -132,7 +129,7 @@
       border-radius: 12px;
       overflow: hidden;
       transition: 0.4s;
-      padding: 10px; /* Small inner padding for professional border look */
+      padding: 10px;
     }
 
     .video-card:hover {
@@ -153,7 +150,15 @@
       top: 0; left: 0; width: 100%; height: 100%;
     }
 
-    /* FAQ */
+    .details-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .details-label { color: #888; }
+    .details-value { color: #fff; font-weight: 700; font-family: 'Outfit'; }
+
     .faq-grid { text-align: left; max-width: 800px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px; }
     .faq-item { margin-bottom: 30px; }
     .faq-item h4 { color: #fff; margin-bottom: 5px; }
@@ -175,12 +180,29 @@
     <div class="content-card">
       <p>This modpack is designed to keep you on edge while trying to navigate through pitch-black caves and foggy nights. <span class="highlight-red">Dread</span> replaces every vanilla hostile mob with grotesque creatures that stalk and chase you through the dark.</p>
       <p>Play with friends using proximity chat, but stay close—losing your group in the pitch-black could be your final mistake.</p>
-      <p><strong>Version 3.0</strong> is a complete overhaul. We've added immersive biomes, seasons, thirst mechanics, realistic physics, and a suite of new horrors.</p>
+      <p><strong>Version 3.0</strong> is a complete overhaul. We've added immersive biomes, seasons, thirst mechanics, realistic physics, and a suite of new horrors to ensure you never feel safe.</p>
+      <p style="font-style: italic; opacity: 0.7;">While there are some known bugs with 3.0, these will be quickly fixed. Good luck.</p>
     </div>
 
     <div class="btn-group">
-      <a href="dread.exe" class="btn btn-primary" download>Download Dread (v3.0)</a>
-      <a href="https://discord.gg/YOUR_INVITE_LINK" class="btn btn-secondary" target="_blank">Join the Discord</a>
+      <a href="dread.exe" class="btn btn-primary" download>Download Dread (Version 3.0)</a>
+      <a href="https://discord.gg/YOUR_INVITE_LINK" class="btn btn-secondary" target="_blank">Official Discord Server</a>
+    </div>
+
+    <div class="content-card" style="max-width: 400px; margin: 0 auto 50px auto; padding: 25px;">
+      <h3 style="font-family: 'Outfit'; font-size: 1.4rem; color: #fff; margin-bottom: 20px;">Details</h3>
+      <div class="details-row">
+        <span class="details-label">Downloads:</span>
+        <span class="details-value">1,502,384</span>
+      </div>
+      <div class="details-row">
+        <span class="details-label">Created:</span>
+        <span class="details-value" style="font-weight: 400;">2 years ago</span>
+      </div>
+      <div class="details-row" style="margin-bottom: 0;">
+        <span class="details-label">Updated:</span>
+        <span class="details-value" style="font-weight: 400;">Today</span>
+      </div>
     </div>
 
     <div class="video-section">
@@ -221,5 +243,13 @@
     </footer>
   </div>
 
+  <script>
+    const logo = document.querySelector('.logo');
+    document.addEventListener('mousemove', (e) => {
+      const x = (window.innerWidth / 2 - e.clientX) / 40;
+      const y = (window.innerHeight / 2 - e.clientY) / 40;
+      logo.style.transform = `translate(${-x}px, ${-y}px)`;
+    });
+  </script>
 </body>
 </html>
