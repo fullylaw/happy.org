@@ -102,6 +102,59 @@
     .btn-secondary { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
     .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
 
+    /* Team Section Styles */
+    .team-section {
+      text-align: left;
+      margin-bottom: 50px;
+    }
+    
+    .team-header {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 15px;
+      font-weight: 400;
+    }
+
+    .profile-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .profile-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #222; /* Placeholder for Arrenek image */
+      object-fit: cover;
+    }
+
+    .profile-info h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      color: #fff;
+    }
+
+    .badge-owner {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ccc;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      margin-left: 8px;
+      text-transform: uppercase;
+    }
+
+    .profile-stats {
+      margin-top: 5px;
+      color: #888;
+      font-size: 0.9rem;
+    }
+
     .video-section {
       margin-top: 40px;
       padding: 40px 0;
@@ -180,21 +233,30 @@
     <div class="content-card">
       <p>This modpack is designed to keep you on edge while trying to navigate through pitch-black caves and foggy nights. <span class="highlight-red">Dread</span> replaces every vanilla hostile mob with grotesque creatures that stalk and chase you through the dark.</p>
       <p>Play with friends using proximity chat, but stay close—losing your group in the pitch-black could be your final mistake.</p>
-      <p><strong>Version 3.0</strong> is a complete overhaul. We've added immersive biomes, seasons, thirst mechanics, realistic physics, and a suite of new horrors to ensure you never feel safe.</p>
-      <p style="font-style: italic; opacity: 0.7;">While there are some known bugs with 3.0, these will be quickly fixed. Good luck.</p>
+      <p><strong>Version 3.0</strong> is a complete overhaul. We've added immersive biomes, seasons, thirst mechanics, realistic physics, and a suite of new horrors.</p>
     </div>
 
     <div class="btn-group">
       <a href="dread.exe" class="btn btn-primary" download>Download Dread (Version 3.0)</a>
-      <a href="https://discord.gg/YOUR_INVITE_LINK" class="btn btn-secondary" target="_blank">Official Discord Server</a>
+      <a href="https://discord.com/invite/tUGPm9aF78" class="btn btn-secondary" target="_blank">Official Discord Server</a>
+    </div>
+
+    <div class="team-section">
+      <p class="team-header">The DREAD - A Horror Survival Pack Team</p>
+      <div class="profile-card">
+        <div class="profile-img" style="background: url('path_to_arrenek_image.jpg') center/cover;"></div> 
+        <div class="profile-info">
+          <h3>Arrenek <span class="badge-owner">Owner</span></h3>
+          <p class="profile-stats">8 Projects • 2.0M Downloads</p>
+        </div>
+      </div>
     </div>
 
     <div class="content-card" style="max-width: 400px; margin: 0 auto 50px auto; padding: 25px;">
       <h3 style="font-family: 'Outfit'; font-size: 1.4rem; color: #fff; margin-bottom: 20px;">Details</h3>
       <div class="details-row">
         <span class="details-label">Downloads:</span>
-        <span class="details-value">1,502,384</span>
-      </div>
+        <span class="details-value">1,502,384</span> </div>
       <div class="details-row">
         <span class="details-label">Created:</span>
         <span class="details-value" style="font-weight: 400;">2 years ago</span>
