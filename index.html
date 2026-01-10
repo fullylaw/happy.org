@@ -6,243 +6,220 @@
   <title>Dread Reborn</title>
 
   <meta property="og:title" content="Dread Reborn" />
-  <meta property="og:description" content="Dread is the most immersive and creepy modpack for Minecraft. Face the darkness." />
+  <meta property="og:description" content="The most immersive Minecraft horror experience." />
   <meta property="og:image" content="https://dreadreborn.com/2ee07491-5e47-40ff-aa53-1b24bfea036a.png" />
   <meta property="og:type" content="website" />
 
   <link rel="icon" href="2ee07491-5e47-40ff-aa53-1b24bfea036a.png" />
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Outfit:wght@500;800&display=swap');
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
     body {
-      font-family: 'Playfair Display', serif;
-      min-height: 100vh;
-      background: radial-gradient(circle at center, #060000 0%, #020000 60%, #000 100%);
-      color: #e6e6e6;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      background-color: #050505;
+      color: #fafafa;
+      line-height: 1.6;
       overflow-x: hidden;
-      overflow-y: auto;
     }
 
-    .hero {
-      text-align: center;
-      max-width: 900px;
+    .bg-gradient {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 50% -20%, #1a0000 0%, #050505 80%);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
       padding: 60px 20px;
-      position: relative;
-      z-index: 2;
+      text-align: center;
     }
 
     .logo {
-      width: 220px;
-      margin: 0 auto 35px;
-      filter: drop-shadow(0 0 18px rgba(120,0,0,0.6));
-      opacity: 0.9;
-      transition: transform 0.15s ease-out;
-      will-change: transform;
+      width: 160px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 10px 30px rgba(0,0,0,0.8));
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     h1 {
-      font-size: clamp(3.5rem, 8vw, 6rem);
-      letter-spacing: 8px;
-      color: #b00000;
-      text-shadow: 0 0 6px rgba(120,0,0,0.6), 0 0 18px rgba(120,0,0,0.4);
-      margin-bottom: 18px;
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #fff;
+      margin-bottom: 10px;
     }
 
     .subtitle {
-      font-size: 1.3rem;
-      color: #ff4d4d;
-      margin-bottom: 25px;
-      font-weight: 700;
-    }
-
-    .description-box {
-      text-align: left;
-      background: rgba(20, 0, 0, 0.6);
-      padding: 30px;
-      border-left: 3px solid #b00000;
+      font-size: 1.1rem;
+      color: #888;
       margin-bottom: 40px;
-      line-height: 1.8;
-      font-size: 1.05rem;
     }
 
-    .description-box p {
+    /* Main Description Panel */
+    .content-card {
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: left;
+      margin-bottom: 50px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    }
+
+    .content-card p {
       margin-bottom: 20px;
-    }
-
-    .highlight {
-      color: #ff3333;
-      font-weight: bold;
-    }
-
-    .actions {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin: 40px 0;
-    }
-
-    .btn {
-      padding: 16px 44px;
       font-size: 1.05rem;
-      letter-spacing: 2px;
+      color: #bbb;
+    }
+
+    .highlight-red { color: #ff3333; font-weight: 600; }
+
+    /* Buttons */
+    .btn-group { display: flex; justify-content: center; gap: 15px; margin-bottom: 60px; flex-wrap: wrap; }
+    
+    .btn {
+      padding: 14px 32px;
+      border-radius: 10px;
       text-decoration: none;
-      border-radius: 6px;
-      color: #eee;
-      background: linear-gradient(180deg, #5c0000, #2a0000);
-      box-shadow: 0 8px 18px rgba(80,0,0,0.5);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      font-weight: 600;
+      font-family: 'Outfit', sans-serif;
+      transition: 0.3s;
     }
 
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 26px rgba(120,0,0,0.6);
-      background: linear-gradient(180deg, #6a0000, #320000);
+    .btn-primary { background: #fff; color: #000; }
+    .btn-primary:hover { background: #ff3333; color: #fff; transform: translateY(-3px); }
+
+    .btn-secondary { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+
+    /* VIDEO SECTION - PROFESSIONAL GRID */
+    .video-section {
+      margin-top: 40px;
+      padding: 40px 0;
     }
 
-    .btn.discord {
-      background: #5865F2;
-      box-shadow: 0 8px 18px rgba(88,101,242,0.3);
-    }
-
-    .trailers-section {
-      margin-top: 60px;
-    }
-
-    .trailers-section h2 {
-      color: #b00000;
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.8rem;
       margin-bottom: 30px;
-      letter-spacing: 3px;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
-    .video-container {
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+
+    .video-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: 0.4s;
+      padding: 10px; /* Small inner padding for professional border look */
+    }
+
+    .video-card:hover {
+      border-color: #ff3333;
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(255, 51, 51, 0.1);
+    }
+
+    .video-wrapper {
       position: relative;
-      width: 100%;
-      padding-bottom: 56.25%; 
-      margin-bottom: 30px;
-      border: 2px solid #330000;
+      padding-bottom: 56.25%;
+      border-radius: 8px;
+      overflow: hidden;
     }
 
-    .video-container iframe {
+    .video-wrapper iframe {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
     }
 
-    .faq {
-      margin-top: 80px;
-      text-align: left;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      opacity: 0.85;
-      border-top: 1px solid #330000;
-      padding-top: 40px;
-    }
+    /* FAQ */
+    .faq-grid { text-align: left; max-width: 800px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px; }
+    .faq-item { margin-bottom: 30px; }
+    .faq-item h4 { color: #fff; margin-bottom: 5px; }
+    .faq-item p { color: #777; font-size: 0.95rem; }
 
-    .faq h3 { margin-bottom: 20px; color: #b00000; }
-    .faq-item { margin-bottom: 22px; }
-    .faq-item strong { display: block; margin-bottom: 6px; color: #ddd; }
-    .faq-item span { font-size: 0.95rem; color: #aaa; }
-
-    .particle {
-      position: absolute;
-      width: 2px; height: 2px;
-      background: rgba(120,0,0,0.45);
-      border-radius: 50%;
-      animation: rise linear infinite;
-      z-index: 1;
-    }
-    @keyframes rise {
-      from { transform: translateY(110vh); opacity: 0; }
-      15% { opacity: 1; }
-      to { transform: translateY(-120vh); opacity: 0; }
-    }
-
-    .fade-in { opacity: 0; transform: translateY(20px); animation: fadeUp 1.2s ease forwards; }
-    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    footer { margin-top: 60px; padding-bottom: 40px; color: #444; font-size: 0.8rem; }
   </style>
 </head>
 <body>
 
-  <script>
-    for (let i = 0; i < 45; i++) {
-      const p = document.createElement('div');
-      p.className = 'particle';
-      p.style.left = Math.random() * 100 + 'vw';
-      p.style.animationDuration = 8 + Math.random() * 10 + 's';
-      p.style.animationDelay = Math.random() * 10 + 's';
-      document.body.appendChild(p);
-    }
-  </script>
+  <div class="bg-gradient"></div>
 
-  <main class="hero fade-in">
-    <img src="2ee07491-5e47-40ff-aa53-1b24bfea036a.png" alt="Dread Reborn Logo" class="logo" />
+  <div class="container">
+    <img src="2ee07491-5e47-40ff-aa53-1b24bfea036a.png" alt="Logo" class="logo" />
 
     <h1>Dread Reborn</h1>
+    <p class="subtitle">The most immersive and creepy modpack for Minecraft</p>
 
-    <p class="subtitle">Dread is the most immersive and creepy modpack for Minecraft</p>
-
-    <div class="description-box">
-      <p>This modpack is designed to keep you on edge while trying to navigate through pitch-black caves and foggy nights, never allowing you to feel comfortable. Dread is meant to make every task feel like it might be your last, it does this by removing every vanilla hostile mob and instead replacing them with <span class="highlight">grotesque creatures that stalk and chase the player.</span></p>
-      
-      <p>Play with your friends using the included proximity chat mod, but make sure not to lose them or you might be alone in the pitch-dark.</p>
-
-      <p><span class="highlight">"Dread Reborn"</span>, which is the new version 3.0 of the modpack, changes everything about it to make it more immersive and horrifying than ever.</p>
-
-      <p>The same principles are here, but this overhaul adds so much more to the experience, such as: <strong>some guns, multiple main biomes, seasons, thirst, new shaders and textures, realistic physics, new horrors and more...</strong></p>
-
-      <p><em>While there are some known bugs with 3.0, these will be quickly fixed. Good luck.</em></p>
+    <div class="content-card">
+      <p>This modpack is designed to keep you on edge while trying to navigate through pitch-black caves and foggy nights. <span class="highlight-red">Dread</span> replaces every vanilla hostile mob with grotesque creatures that stalk and chase you through the dark.</p>
+      <p>Play with friends using proximity chat, but stay close—losing your group in the pitch-black could be your final mistake.</p>
+      <p><strong>Version 3.0</strong> is a complete overhaul. We've added immersive biomes, seasons, thirst mechanics, realistic physics, and a suite of new horrors.</p>
     </div>
 
-    <div class="actions">
-      <a href="dread.exe" class="btn" download>Download Dread (Version 3.0)</a>
-      <a href="https://discord.gg/YOUR_INVITE_LINK" class="btn discord" target="_blank">Official Discord Server</a>
+    <div class="btn-group">
+      <a href="dread.exe" class="btn btn-primary" download>Download Dread (v3.0)</a>
+      <a href="https://discord.gg/YOUR_INVITE_LINK" class="btn btn-secondary" target="_blank">Join the Discord</a>
     </div>
 
-    <section class="trailers-section">
-      <h2>Dread Reborn Trailers</h2>
-      
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/_tK00suS-kk" frameborder="0" allowfullscreen></iframe>
+    <div class="video-section">
+      <h2 class="section-title">Official Trailers</h2>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/_tK00suS-kk" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/F7tRZuJgRww" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/IEPzpvztfQc" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/F7tRZuJgRww" frameborder="0" allowfullscreen></iframe>
-      </div>
-
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/IEPzpvztfQc" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </section>
-
-    <section class="faq">
-      <h3>FAQ</h3>
+    <div class="faq-grid">
+      <h2 class="section-title" style="text-align: center;">Information</h2>
       <div class="faq-item">
-        <strong>Is Dread Reborn safe?</strong>
-        <span>Yes. Dread Reborn contains no malware. It is a standard Minecraft modpack.</span>
+        <h4>Is Dread Reborn safe?</h4>
+        <p>Yes. Dread Reborn contains no malware. It is a standard Minecraft modpack archive.</p>
       </div>
       <div class="faq-item">
-        <strong>Why the antivirus flag?</strong>
-        <span>Modpacks include Java files and custom launchers that are often flagged as "unrecognized" by Windows and Antivirus. This is a false positive common in the modding community.</span>
+        <h4>Technical Note</h4>
+        <p>Custom launchers and Java files may be flagged as "unrecognized" by Windows Defender. This is a common false positive in the Minecraft modding scene.</p>
       </div>
-    </section>
+    </div>
 
-    <p style="margin-top: 40px; opacity: 0.4;">Version 3.0 · Minecraft 1.21.x</p>
-  </main>
+    <footer>
+      Version 3.0 • Minecraft 1.21.x • Dread Reborn Official
+    </footer>
+  </div>
 
-  <script>
-    const logo = document.querySelector('.logo');
-    document.addEventListener('mousemove', (e) => {
-      const x = (window.innerWidth / 2 - e.clientX) / 40;
-      const y = (window.innerHeight / 2 - e.clientY) / 40;
-      logo.style.transform = `translate(${-x}px, ${-y}px)`;
-    });
-  </script>
 </body>
 </html>
