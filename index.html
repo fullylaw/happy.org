@@ -66,6 +66,7 @@
       margin-bottom: 40px;
     }
 
+    /* Interactive Content Card */
     .content-card {
       background: rgba(255, 255, 255, 0.02);
       backdrop-filter: blur(15px);
@@ -75,6 +76,14 @@
       text-align: left;
       margin-bottom: 50px;
       box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+
+    .content-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 51, 51, 0.3);
+      box-shadow: 0 40px 80px rgba(255, 51, 51, 0.05);
     }
 
     .content-card p {
@@ -102,7 +111,7 @@
     .btn-secondary { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
     .btn-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
 
-    /* Team Section Styles */
+    /* Team Section */
     .team-section {
       text-align: left;
       margin-bottom: 50px;
@@ -123,14 +132,20 @@
       display: flex;
       align-items: center;
       gap: 20px;
+      transition: 0.3s;
+    }
+
+    .profile-card:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.15);
     }
 
     .profile-img {
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      background: #222; /* Placeholder for Arrenek image */
       object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.1);
     }
 
     .profile-info h3 {
@@ -155,11 +170,18 @@
       font-size: 0.9rem;
     }
 
-    .video-section {
-      margin-top: 40px;
-      padding: 40px 0;
+    /* Details Dash */
+    .details-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
     }
 
+    .details-label { color: #888; }
+    .details-value { color: #fff; font-weight: 700; font-family: 'Outfit'; }
+
+    /* Videos */
+    .video-section { margin-top: 40px; padding: 40px 0; }
     .section-title {
       font-family: 'Outfit', sans-serif;
       font-size: 1.8rem;
@@ -188,7 +210,6 @@
     .video-card:hover {
       border-color: #ff3333;
       transform: scale(1.02);
-      box-shadow: 0 10px 30px rgba(255, 51, 51, 0.1);
     }
 
     .video-wrapper {
@@ -202,15 +223,6 @@
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
     }
-
-    .details-row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 15px;
-    }
-
-    .details-label { color: #888; }
-    .details-value { color: #fff; font-weight: 700; font-family: 'Outfit'; }
 
     .faq-grid { text-align: left; max-width: 800px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px; }
     .faq-item { margin-bottom: 30px; }
@@ -238,13 +250,13 @@
 
     <div class="btn-group">
       <a href="dread.exe" class="btn btn-primary" download>Download Dread (Version 3.0)</a>
-      <a href="https://discord.com/invite/tUGPm9aF78" class="btn btn-secondary" target="_blank">Official Discord Server</a>
+      <a href="https://discord.gg/YOUR_INVITE_LINK" class="btn btn-secondary" target="_blank">Official Discord Server</a>
     </div>
 
     <div class="team-section">
       <p class="team-header">The DREAD - A Horror Survival Pack Team</p>
       <div class="profile-card">
-        <div class="profile-img" style="background: url('path_to_arrenek_image.jpg') center/cover;"></div> 
+        <img src="5ea063d5-9d95-4259-b41e-f375334222e6-profile_image-150x150.png" alt="Arrenek" class="profile-img" />
         <div class="profile-info">
           <h3>Arrenek <span class="badge-owner">Owner</span></h3>
           <p class="profile-stats">8 Projects • 2.0M Downloads</p>
@@ -256,7 +268,8 @@
       <h3 style="font-family: 'Outfit'; font-size: 1.4rem; color: #fff; margin-bottom: 20px;">Details</h3>
       <div class="details-row">
         <span class="details-label">Downloads:</span>
-        <span class="details-value">1,502,384</span> </div>
+        <span class="details-value">1,502,384</span>
+      </div>
       <div class="details-row">
         <span class="details-label">Created:</span>
         <span class="details-value" style="font-weight: 400;">2 years ago</span>
