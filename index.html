@@ -4,19 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DREAD REBORN</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&display=swap');
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Cinzel', serif;
+      font-family: 'Playfair Display', serif;
       min-height: 100vh;
-      background: radial-gradient(circle at center, #300000 0%, #050000 45%, #000 100%);
+      background: radial-gradient(circle at center, #1a0000 0%, #050000 55%, #000 100%);
       color: #fff;
       display: flex;
       align-items: center;
@@ -24,127 +21,117 @@
       overflow: hidden;
     }
 
-    .container {
+    .hero {
       text-align: center;
       max-width: 900px;
-      padding: 40px 20px;
-    }
-
-    /* Blood Moon */
-    .moon {
-      width: 220px;
-      height: 220px;
-      margin: 0 auto 40px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #ff4b4b, #b30000 60%, #5a0000 100%);
-      box-shadow: 0 0 40px 15px rgba(255, 0, 0, 0.6);
+      padding: 60px 20px;
       position: relative;
+      z-index: 2;
     }
 
-    .moon::after {
-      content: '';
-      position: absolute;
-      inset: -20px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,0,0,0.35), transparent 70%);
-      filter: blur(20px);
+    /* Logo Image (replaces moon) */
+    .logo {
+      width: 240px;
+      margin: 0 auto 35px;
+      filter: drop-shadow(0 0 35px rgba(255,0,0,0.7));
     }
 
     h1 {
-      font-size: clamp(3rem, 7vw, 5.5rem);
-      letter-spacing: 6px;
-      margin-bottom: 10px;
-      color: #ff2b2b;
-      text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      letter-spacing: 8px;
+      color: #e60000;
+      text-shadow:
+        0 0 15px rgba(255,0,0,0.8),
+        0 0 40px rgba(255,0,0,0.6);
+      margin-bottom: 18px;
     }
 
-    h2 {
-      font-size: clamp(1.4rem, 4vw, 2.2rem);
-      letter-spacing: 4px;
-      margin-bottom: 25px;
-      color: #ffffff;
-    }
-
-    .tagline {
-      font-size: 1rem;
-      opacity: 0.85;
-      max-width: 600px;
-      margin: 0 auto 40px;
-      font-style: italic;
-      line-height: 1.6;
-    }
-
-    .download-btn {
-      display: inline-block;
-      padding: 16px 42px;
+    .subtitle {
       font-size: 1.1rem;
+      max-width: 620px;
+      margin: 0 auto 45px;
+      opacity: 0.85;
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 16px 44px;
+      font-size: 1.05rem;
       letter-spacing: 2px;
-      color: #fff;
       text-decoration: none;
       border-radius: 6px;
-      background: linear-gradient(180deg, #c80000, #7a0000);
-      box-shadow: 0 10px 25px rgba(200, 0, 0, 0.5);
+      color: #fff;
+      background: linear-gradient(180deg, #c20000, #6e0000);
+      box-shadow: 0 12px 30px rgba(200,0,0,0.55);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .download-btn:hover {
+    .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 35px rgba(255, 0, 0, 0.7);
+      box-shadow: 0 16px 40px rgba(255,0,0,0.75);
     }
 
     .version {
-      margin-top: 16px;
+      margin-top: 22px;
       font-size: 0.85rem;
-      opacity: 0.6;
+      opacity: 0.55;
     }
 
-    /* Floating red particles */
+    /* Ambient particles like bloodmoon.lol */
     .particle {
       position: absolute;
-      width: 4px;
-      height: 4px;
-      background: rgba(255, 0, 0, 0.7);
+      width: 3px;
+      height: 3px;
+      background: rgba(255,0,0,0.6);
       border-radius: 50%;
-      animation: float 10s linear infinite;
+      animation: rise linear infinite;
+      z-index: 1;
     }
 
-    @keyframes float {
-      from {
-        transform: translateY(100vh);
-        opacity: 0;
-      }
-      10% { opacity: 1; }
-      to {
-        transform: translateY(-120vh);
-        opacity: 0;
-      }
+    @keyframes rise {
+      from { transform: translateY(110vh); opacity: 0; }
+      15% { opacity: 1; }
+      to { transform: translateY(-120vh); opacity: 0; }
     }
   </style>
 </head>
 <body>
-  <!-- particles -->
+
+  <!-- blood particles -->
   <script>
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 45; i++) {
       const p = document.createElement('div');
       p.className = 'particle';
       p.style.left = Math.random() * 100 + 'vw';
-      p.style.animationDuration = 6 + Math.random() * 10 + 's';
+      p.style.animationDuration = 8 + Math.random() * 10 + 's';
       p.style.animationDelay = Math.random() * 10 + 's';
       document.body.appendChild(p);
     }
   </script>
 
-  <div class="container">
-    <div class="moon"></div>
+  <main class="hero">
+    <img src="2ee07491-5e47-40ff-aa53-1b24bfea036a.png" alt="Dread Reborn Logo" class="logo" />
 
-    <h1>DREAD</h1>
-    <h2>REBORN</h2>
+    <h1>DREAD REBORN</h1>
 
-    <p class="tagline">“When night falls, terror rises. A Minecraft horror experience like no other.”</p>
+    <p class="subtitle">
+      When night falls, terror rises. A brutal Minecraft horror modpack inspired by the Blood Moon.
+    </p>
 
-    <a href="#" class="download-btn">Download Modpack</a>
+    <div class="actions">
+      <a href="#" class="btn">Download Modpack</a>
+    </div>
 
     <div class="version">Version 1.0 · Minecraft 1.21.x</div>
-  </div>
+  </main>
+
 </body>
 </html>
