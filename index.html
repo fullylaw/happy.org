@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dread Reborn</title>
+
+  <meta property="og:title" content="Dread Reborn" />
+  <meta property="og:description" content="The most immersive Minecraft horror experience." />
+  <meta property="og:image" content="https://dreadreborn.com/2ee07491-5e47-40ff-aa53-1b24bfea036a.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" href="2ee07491-5e47-40ff-aa53-1b24bfea036a.png" />
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Outfit:wght@500;800&display=swap');
 
@@ -58,7 +66,7 @@
       margin-bottom: 40px;
     }
 
-    /* Standard Card Style */
+    /* Interactive Content Card */
     .content-card {
       background: rgba(255, 255, 255, 0.02);
       backdrop-filter: blur(15px);
@@ -66,7 +74,7 @@
       border-radius: 20px;
       padding: 40px;
       text-align: left;
-      margin-bottom: 30px;
+      margin-bottom: 50px;
       box-shadow: 0 30px 60px rgba(0,0,0,0.5);
       transition: transform 0.3s ease, border-color 0.3s ease;
     }
@@ -76,39 +84,33 @@
       border-color: rgba(255, 51, 51, 0.3);
     }
 
-    .feature-icon {
-      background: rgba(255, 51, 51, 0.1);
-      color: #ff3333;
-      width: 45px;
-      height: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 10px;
+    .content-card p {
       margin-bottom: 20px;
-      font-size: 1.2rem;
-    }
-
-    h2.feature-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.8rem;
-      color: #fff;
-      margin-bottom: 15px;
-    }
-
-    .feature-text {
-      color: #bbb;
       font-size: 1.05rem;
+      color: #bbb;
     }
 
-    /* Buttons */
-    .btn-group { display: flex; justify-content: center; gap: 15px; margin: 40px 0 60px 0; flex-wrap: wrap; }
-    .btn { padding: 14px 32px; border-radius: 10px; text-decoration: none; font-weight: 600; font-family: 'Outfit', sans-serif; transition: 0.3s; }
+    .highlight-red { color: #ff3333; font-weight: 600; }
+
+    .btn-group { display: flex; justify-content: center; gap: 15px; margin-bottom: 60px; flex-wrap: wrap; }
+    
+    .btn {
+      padding: 14px 32px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Outfit', sans-serif;
+      transition: 0.3s;
+    }
+
     .btn-primary { background: #fff; color: #000; }
     .btn-primary:hover { background: #ff3333; color: #fff; transform: translateY(-3px); }
+
     .btn-secondary { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
 
-    /* Team Section Style */
+    /* Team Section */
+    .team-section { text-align: left; margin-bottom: 50px; }
+    .team-header { font-size: 1.1rem; color: #fff; margin-bottom: 15px; }
     .profile-card {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -117,13 +119,25 @@
       display: flex;
       align-items: center;
       gap: 20px;
-      text-align: left;
     }
     .profile-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
-    .details-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+    .badge-owner { background: rgba(255, 255, 255, 0.1); color: #ccc; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; margin-left: 8px; text-transform: uppercase; }
 
+    /* Moving Details Dash */
+    .details-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
+    .details-label { color: #888; }
+    .details-value { color: #fff; font-weight: 700; font-family: 'Outfit'; }
+    
     /* Live Update Pulse */
-    .pulse-dot { display: inline-block; width: 8px; height: 8px; background-color: #00ff00; border-radius: 50%; margin-right: 8px; box-shadow: 0 0 10px #00ff00; animation: pulse 2s infinite; }
+    .pulse-dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      background-color: #00ff00;
+      border-radius: 50%;
+      margin-right: 8px;
+      box-shadow: 0 0 10px #00ff00;
+      animation: pulse 2s infinite;
+    }
     @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
     /* Video Section */
@@ -147,24 +161,24 @@
     <p class="subtitle">The most immersive and creepy modpack for Minecraft</p>
 
     <div class="content-card">
-      <p>This modpack is designed to keep you on edge while trying to navigate through pitch-black caves and foggy nights, never allowing you to feel comfortable. DREAD is meant to make every task feel like it might be your last, it does this by removing every vanilla hostile mob and instead replacing them with grotesque creatures that stalk and chase the player.</p>
-      <p>Play with your friends using the included proximity chat mod, but make sure not to lose them or you might be alone in the pitch-dark.</p>
-      <p>"DREAD Reborn", which is the new version 3.0 of the modpack, changes everything about it to make it more immersive and horrifying than ever.</p>
-      <p>The same principles are here, but this overhaul adds so much more to the experience, such as: some guns, multiple main biomes, seasons, thirst, new shaders and textures, realistic physics, new horrors and more...</p>
-      <p style="font-style: italic; opacity: 0.7;">While there are some known bugs with 3.0, these will be quickly fixed</p>
+      <p>This modpack is designed to keep you on edge while trying to navigate through pitch-black caves and foggy nights. <span class="highlight-red">Dread</span> replaces every vanilla hostile mob with grotesque creatures that stalk and chase you through the dark.</p>
+      <p>Play with friends using proximity chat, but stay close—losing your group in the pitch-black could be your final mistake.</p>
+      <p><strong>Version 3.0</strong> is a complete overhaul. We've added immersive biomes, seasons, thirst mechanics, realistic physics, and a suite of new horrors.</p>
     </div>
 
     <div class="btn-group">
       <a href="dread.exe" class="btn btn-primary" download>Download Dread (Version 3.0)</a>
-      <a href="https://discord.gg/YOUR_INVITE_LINK" class="btn btn-secondary" target="_blank">Official Discord Server</a>
+      <a href="https://discord.com/invite/tUGPm9aF78" class="btn btn-secondary" target="_blank">Official Discord Server</a>
     </div>
 
-    <div style="text-align: left; margin-bottom: 10px; color: #fff;">The DREAD - A Horror Survival Pack Team</div>
-    <div class="profile-card" style="margin-bottom: 40px;">
-      <img src="5ea063d5-9d95-4259-b41e-f375334222e6-profile_image-150x150.png" alt="Arrenek" class="profile-img" />
-      <div class="profile-info">
-        <h3>Arrenek <span class="badge-owner">Owner</span></h3>
-        <p style="color: #888; font-size: 0.9rem;">8 Projects • 2.0M Downloads</p>
+    <div class="team-section">
+      <p class="team-header">The DREAD - A Horror Survival Pack Team</p>
+      <div class="profile-card">
+        <img src="5ea063d5-9d95-4259-b41e-f375334222e6-profile_image-150x150.png" alt="Arrenek" class="profile-img" />
+        <div class="profile-info">
+          <h3>Arrenek <span class="badge-owner">Owner</span></h3>
+          <p class="profile-stats">8 Projects • 2.0M Downloads</p>
+        </div>
       </div>
     </div>
 
@@ -172,63 +186,61 @@
       <h3 style="font-family: 'Outfit'; font-size: 1.4rem; color: #fff; margin-bottom: 20px;">Details</h3>
       <div class="details-row">
         <span class="details-label">Downloads:</span>
-        <span class="details-value" id="download-count">0</span>
-      </div>
+        <span class="details-value" id="download-count">0</span> </div>
       <div class="details-row">
         <span class="details-label">Created:</span>
         <span class="details-value" style="font-weight: 400;">2 years ago</span>
       </div>
       <div class="details-row" style="margin-bottom: 0;">
         <span class="details-label">Updated:</span>
-        <span class="details-value" style="font-weight: 400;"><span class="pulse-dot"></span>Today</span>
+        <span class="details-value" style="font-weight: 400;">
+            <span class="pulse-dot"></span>Today
+        </span>
       </div>
     </div>
 
-    <div class="content-card">
-      <div class="feature-icon">💀</div>
-      <h2 class="feature-title">The Blood Moon Rises</h2>
-      <p class="feature-text">Once every seven nights, the sky turns a deep, sickening crimson. The Blood Moon has risen. This is no ordinary night cycle—it is a harbinger of doom. The very fabric of the world shifts as ancient, malevolent forces stir from their slumber.</p>
+    <div class="video-section">
+      <div class="video-grid">
+        <div class="video-card"><div class="video-wrapper"><iframe src="https://www.youtube.com/embed/_tK00suS-kk" frameborder="0" allowfullscreen></iframe></div></div>
+        <div class="video-card"><div class="video-wrapper"><iframe src="https://www.youtube.com/embed/F7tRZuJgRww" frameborder="0" allowfullscreen></iframe></div></div>
+        <div class="video-card"><div class="video-wrapper"><iframe src="https://www.youtube.com/embed/IEPzpvztfQc" frameborder="0" allowfullscreen></iframe></div></div>
+      </div>
     </div>
 
-    <div class="content-card">
-      <div class="feature-icon">👻</div>
-      <h2 class="feature-title">New Mobs</h2>
-      <p class="feature-text">From the blood-soaked darkness emerge creatures of pure terror. The Crimson Wraith—a spectral horror that phases through walls and drains your sanity. The Bone Stalker—a twisted skeletal abomination that hunts by sound alone.</p>
-    </div>
-
-    <div class="content-card">
-      <div class="feature-icon">🔥</div>
-      <h2 class="feature-title">Cursed Events</h2>
-      <p class="feature-text">The Blood Moon doesn't just spawn horrors—it corrupts reality itself. Watch as the ground beneath your feet begins to bleed. Witness the trees twist into gnarled, reaching claws. Hear the whispers of the damned echoing from empty caves.</p>
-    </div>
-
-    <div class="content-card">
-      <div class="feature-icon">🛡️</div>
-      <h2 class="feature-title">Survive the Night</h2>
-      <p class="feature-text">There is no shame in hiding. Board your windows. Light every corner. Pray to whatever gods might still listen. But know this: some nights, hiding isn't enough. The Blood Moon will test your courage, your resources, and your will to survive.</p>
-    </div>
-
-    <div class="video-grid">
-      <div class="video-card"><div class="video-wrapper"><iframe src="https://www.youtube.com/embed/_tK00suS-kk" frameborder="0" allowfullscreen></iframe></div></div>
-      <div class="video-card"><div class="video-wrapper"><iframe src="https://www.youtube.com/embed/F7tRZuJgRww" frameborder="0" allowfullscreen></iframe></div></div>
-      <div class="video-card"><div class="video-wrapper"><iframe src="https://www.youtube.com/embed/IEPzpvztfQc" frameborder="0" allowfullscreen></iframe></div></div>
-    </div>
-
-    <footer>Version 3.0 • Minecraft 1.21.x • Dread Reborn Official</footer>
+    <footer>
+      Version 3.0 • Minecraft 1.21.x • Dread Reborn Official
+    </footer>
   </div>
 
   <script>
+    // Counter Animation for Downloads
     function animateValue(obj, start, end, duration) {
       let startTimestamp = null;
       const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
-        if (progress < 1) window.requestAnimationFrame(step);
+        const value = Math.floor(progress * (end - start) + start);
+        obj.innerHTML = value.toLocaleString();
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
       };
       window.requestAnimationFrame(step);
     }
-    setTimeout(() => { animateValue(document.getElementById("download-count"), 0, 1502384, 2000); }, 500);
+
+    const downloadElem = document.getElementById("download-count");
+    // Start animation when page is ready
+    setTimeout(() => {
+      animateValue(downloadElem, 0, 1502384, 2000); // 1,502,384 uneven count
+    }, 500);
+
+    // Subtle Logo movement
+    const logo = document.querySelector('.logo');
+    document.addEventListener('mousemove', (e) => {
+      const x = (window.innerWidth / 2 - e.clientX) / 40;
+      const y = (window.innerHeight / 2 - e.clientY) / 40;
+      logo.style.transform = `translate(${-x}px, ${-y}px)`;
+    });
   </script>
 </body>
 </html>
